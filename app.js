@@ -10,7 +10,7 @@ app.get('/', function (req,res) {
     res.status(200).send('Hello, world!');
 });
 
-let router = require('./Routes/todos');
+let router = require('./routes/todos');
 app.use('/todos',router);
 
 let port = process.env.PORT || config.get("PORT");
