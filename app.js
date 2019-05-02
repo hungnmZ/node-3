@@ -3,17 +3,17 @@ let bodyParser = require('body-parser');
 let config = require('config');
 let app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.get('/', function (req,res) {
     res.status(200).send('Hello, world!');
 });
 
-let todos = require('./Routes/todos');
-app.use('/todos',todos);
+let router = require('./Routes/todos');
+app.use('/todos',router);
 
-let port = process.env.PORT || config.get("PORT") ;
+let port = process.env.PORT || config.get("PORT");
 let host = process.env.HOST || config.get("HOST");
 
 app.listen(port,host,function () {
