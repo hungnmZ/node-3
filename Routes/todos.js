@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 
     try{
-        let data = await todoList.findById(req.params.id);
+        let data = await todoList.findById(req.params.id)
         res.status(200).send({
             success: true,
             data
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/:id', async (req, res) => {
     try{
-        let {title} = req.body;
+        let {title} = req.body
         let data = await todoList.findByIdAndUpdate(req.params.id,
             { $set: {title}}, {new: true});
         res.status(200).send({
@@ -45,10 +45,10 @@ router.post('/:id', async (req, res) => {
 router.post('/:id/toogle', async (req, res)=>{
 
     try{
-        let object = await todoList.findById(req.params.id);
+        let object = await todoList.findById(req.params.id)
         let objectCompletion = object.completed;
         let data = await todoList.findByIdAndUpdate(req.params.id,
-            { $set: {completed: !objectCompletion}}, {new: true});
+            { $set: {completed: !objectCompletion}}, {new: true})
         res.status(200).send({
             success: true,
             data
@@ -61,7 +61,7 @@ router.post('/:id/toogle', async (req, res)=>{
 router.delete('/:id', async (req, res)=>{
 
     try {
-        await todoList.deleteOne({_id: req.params.id});
+        await todoList.deleteOne({_id: req.params.id})
         res.status(200).send({
             success: true,
             data: true
