@@ -1,11 +1,11 @@
 let mongoose = require('mongoose');
 let config = require('config');
+let MONGO_PATH = process.env.MONGO_PATH || config.get("MONGO_PATH");
+let MONGO_PORT = process.env.MONGO_PORT || config.get("MONGO_PORT");
 
-let port = process.env.MONGO_PORT || config.get("MONGO_PORT");
-let path = process.env.MONGO_PATH || config.get("MONGO_PATH");
-
-module.exports = mongoose.createConnection(`mongodb://${path}:${port}/todo`, {useNewUrlParser : true}, function (err) {
-    if (err)
-        console.log(err);
+let connection = mongoose.createConnection(`mongodb://${MONGO_PATH}:${MONGO_PORT}/todo`, {useNewUrlParser : true}, function (error) {
+    if (error)
+        console.log(error);
     else console.log ('Connected successfully to server');
 });
+module.exports = connection;
