@@ -27,19 +27,6 @@ router.get('/:id', async (req, res) => {
 
 });
 
-router.get('/', async (req, res) => {
-
-    try{
-        let data = await todoList.find();
-        res.status(200).send({
-            success: true,
-            data
-        })
-
-    } catch (err) {res.status(400).send(err)}
-
-});
-
 router.post('/:id', async (req, res) => {
     try{
         let {title} = req.body;

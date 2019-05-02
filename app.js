@@ -13,8 +13,8 @@ app.get('/', function (req,res) {
 let todos = require('./Routes/todos');
 app.use('/todos',todos);
 
-let port = process.env.PORT;
-let host = process.env.HOST;
+let port = process.env.PORT || config.get("PORT") ;
+let host = process.env.HOST || config.get("HOST");
 
 app.listen(port,host,function () {
     console.log(`listen on ${host}:${port}`)
